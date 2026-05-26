@@ -12,7 +12,7 @@ export type ProjectSection = {
   images?: string[];
   childImages?: string[];
   personas?: Persona[];
-  variant?: "research" | "concept" | "blueprint" | "journey" | "tech";
+  variant?: "research" | "concept" | "blueprint" | "journey" | "tech" | "personas" | "ai-mechanism" | "architecture" | "imagineer-journey";
 };
 
 export type Project = {
@@ -111,32 +111,29 @@ export const projects: Project[] = [
     category: "交互设计",
     description: "儿童协作 & AI 共创故事讲述应用设计",
     details:
-      "依托生成式 AI 搭建人机共创工作流，支持儿童故事创作。通过 AI 辅助表达、情节生成与逻辑梳理，结合好友协作共创与专属故事库，培养儿童的创造力、语言表达与逻辑思维能力。",
+      "Imagineer 是一款面向 6–10 岁儿童的 AI 协作故事创作应用，旨在解决移动互联网时代儿童\"爱讲故事却缺少听众与伙伴、创作易中断、作品易丢失\"的核心痛点。项目以生成式 AI 为技术底座，构建了\"AI 引导 — 人机共创 — 好友协作 — 成果沉淀\"四层创作工作流：AI 在表达卡顿环节提供情节建议与画面补充，降低创作门槛；好友协作模式支持角色分扮与共同推进，强化社交动机与叙事深度；云端故事库实现作品的长期留存与实体化沉淀（定制故事书）。同时为家长提供适度的参与窗口，弥补家庭场景中故事教育引导的缺失。",
     background:
-      "浙江大学《信息与交互设计技术》课程项目。依托生成式 AI，搭建人机共创工作流，支持儿童故事创作，培养创造力、语言表达与逻辑能力。儿童思维未固化、情感真实、乐于讲故事，但缺听众、缺伙伴、创作易丢失；学校教育方面老师经验不足、故事资源匮乏；家庭方面家长忙、没时间陪伴、缺乏引导方法。",
+      "浙江大学《信息与交互设计技术》课程设计实践。研究团队通过用户访谈与行为观察发现：6–10 岁儿童处于叙事能力发展的关键期，但普遍面临\"表达易卡顿—同伴缺位—成果难留存\"的断裂式创作体验。Imagineer 以\"AI 降低表达门槛 × 协作激发创作动机 × 沉淀构建成长档案\"为设计策略，探索生成式 AI 在儿童叙事教育中的产品化落地路径。",
     sections: [
       {
         title: "用户画像",
-        items: [
-          "儿童（小宇，8 岁，二年级）：爱讲故事、渴望同伴、创作易中断、内容难留存",
-          "家长（花姐，35 岁）：重视教育、时间有限、希望孩子多社交、缺乏故事引导技巧"
-        ]
+        variant: "personas",
+        items: []
       },
       {
         title: "AI 辅助创作机制",
-        items: [
-          "AI 引导表达与情节生成",
-          "AI 补充画面与逻辑梳理",
-          "好友协作共创：邀请好友、角色扮演、共同推进故事",
-          "专属故事库 + 实体化：云端存储，累计后可定制实体故事书"
-        ]
+        variant: "ai-mechanism",
+        items: []
       },
       {
         title: "功能架构",
-        items: [
-          "四大模块：首页、创作、故事库、个人中心",
-          "核心功能：人物创建、情节编辑、好友协作、AI 生成、故事书定制"
-        ]
+        variant: "architecture",
+        items: []
+      },
+      {
+        title: "用户使用旅程",
+        variant: "imagineer-journey",
+        items: []
       },
       {
         title: "设计规范",
@@ -236,11 +233,10 @@ export const projects: Project[] = [
         title: "APP 界面设计",
         images: ["/caixiaomiao_ui1.png"],
         childImages: [
-          "/caixiaomiao_ui_child1.png",
-          "/caixiaomiao_ui_child2.png",
           "/caixiaomiao_ui_child3.png",
-          "/caixiaomiao_ui_child4.png",
-          "/caixiaomiao_ui_child5.png"
+          "/caixiaomiao_ui_child2.png",
+          "/caixiaomiao_ui_child1.png",
+          "/caixiaomiao_ui_child4.png"
         ],
         items: [
           "家长端：注册登录、孩子管理、零花钱发放与额度设置、消费记录查看与数据分析、任务发布与奖励配置、提现审批与安全监管",
@@ -265,7 +261,7 @@ export const projects: Project[] = [
 ];
 
 export const aboutParagraphs: string[] = [
-  "从浙江大学工业设计，到同济大学产品服务体系设计，我的学习路径逐渐从「产品本身」延伸到「系统与体验」。在这一过程中，我开始更多关注复杂场景中的用户行为与决策逻辑，并尝试用设计建立清晰的结构。",
+  "从浙江大学工业设计，到同济大学产品服务体系设计，我的学习路径逐渐从\"产品本身\"延伸到\"系统与体验\"。在这一过程中，我开始更多关注复杂场景中的用户行为与决策逻辑，并尝试用设计建立清晰的结构。",
   "我关注人与技术之间不断变化的关系，并尝试通过设计让这种关系更加清晰、自然。在产品设计、服务系统与数据分析的交叉中，探索 AI 时代的体验方式。相信好的产品不仅解决问题，也应该被理解，被信任。"
 ];
 

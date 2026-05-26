@@ -144,7 +144,7 @@ export default function JourneySection() {
         <div className="mb-8 overflow-hidden rounded-2xl border border-apple-border/20 bg-white/60 shadow-sm">
           <div className="relative w-full">
             <Image
-              src="/caixiaomiao_journey.jpg"
+              src="/财小喵旅程图.png"
               alt="财小喵用户使用旅程图"
               width={2400}
               height={1350}

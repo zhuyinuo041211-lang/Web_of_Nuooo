@@ -9,6 +9,11 @@ import BlueprintSection from "@/components/BlueprintSection";
 import JourneySection from "@/components/JourneySection";
 import TechRoadmap from "@/components/TechRoadmap";
 import SideNav from "@/components/SideNav";
+import ImagineerBackground from "@/components/ImagineerBackground";
+import ImagineerPersonas from "@/components/ImagineerPersonas";
+import ImagineerAIMechanism from "@/components/ImagineerAIMechanism";
+import ImagineerArchitecture from "@/components/ImagineerArchitecture";
+import ImagineerJourney from "@/components/ImagineerJourney";
 
 function sectionId(title: string) {
   return title.replace(/\s+/g, "-");
@@ -73,6 +78,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     if (section.variant === "blueprint") return <BlueprintSection />;
     if (section.variant === "journey") return <JourneySection />;
     if (section.variant === "tech") return <TechRoadmap />;
+    if (section.variant === "personas") return <ImagineerPersonas />;
+    if (section.variant === "ai-mechanism") return <ImagineerAIMechanism />;
+    if (section.variant === "architecture") return <ImagineerArchitecture />;
+    if (section.variant === "imagineer-journey") return <ImagineerJourney />;
     return (
       <ul className="mt-5 space-y-4">
         {section.items.map((item) => (
@@ -146,8 +155,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
               {/* 设计背景 */}
               <section id="design-background" className="pb-12 md:pb-16 scroll-mt-20">
-                <h2 className="text-lg font-semibold tracking-tight text-[#1d1d1f]">设计背景</h2>
-                <HighlightText className="mt-4 text-base leading-8 text-apple-gray" text={project.background} />
+                {slug === "imagineer" ? (
+                  <>
+                    <h2 className="text-lg font-semibold tracking-tight text-[#1d1d1f]">设计背景</h2>
+                    <div className="mt-4">
+                      <ImagineerBackground />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <h2 className="text-lg font-semibold tracking-tight text-[#1d1d1f]">设计背景</h2>
+                    <HighlightText className="mt-4 text-base leading-8 text-apple-gray" text={project.background} />
+                  </>
+                )}
               </section>
 
               {/* 设计细节 */}
@@ -156,7 +176,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   <h2 className="text-lg font-semibold tracking-tight text-[#1d1d1f]">
                     {section.title}
                   </h2>
-                  {renderSection(section)}
+                  <div className="mt-5">{renderSection(section)}</div>
                   {section.images && !section.personas
                     ? section.images.map((src, i) => (
                         <div key={i} className="relative mt-8 w-full max-w-2xl mx-auto">
@@ -185,16 +205,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                         </div>
                       )}
                   {section.childImages && (
-                    <div className="mt-6 grid grid-cols-5 gap-3">
+                    <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
                       {section.childImages.map((src, i) => (
-                        <div key={i} className="flex items-center justify-center aspect-[9/16] w-full overflow-hidden rounded-xl border border-apple-border/20 bg-white shadow-sm">
-                          <img
-                            src={src}
-                            alt={`${section.title} 子页面 ${i + 1}`}
-                            className="max-h-full max-w-full object-contain"
-                            style={{ mixBlendMode: 'screen' }}
-                          />
-                        </div>
+                        <img
+                          key={src}
+                          src={src}
+                          alt={`${section.title} 子页面 ${i + 1}`}
+                          className="w-full rounded-2xl"
+                        />
                       ))}
                     </div>
                   )}
@@ -218,6 +236,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </main>
+
+      {slug === "caixiaomiao" && (
+        <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden -mt-8">
+          <div className="absolute inset-0 bg-pink-100/60 z-10" />
+          <img
+            src="/caixiaomiao_Product_and_child.png"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
 
       <footer className="border-t border-apple-border/20 glass">
         <div className="container-apple py-10">
