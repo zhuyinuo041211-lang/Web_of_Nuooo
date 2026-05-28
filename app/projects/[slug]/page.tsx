@@ -14,6 +14,8 @@ import ImagineerPersonas from "@/components/ImagineerPersonas";
 import ImagineerAIMechanism from "@/components/ImagineerAIMechanism";
 import ImagineerArchitecture from "@/components/ImagineerArchitecture";
 import ImagineerJourney from "@/components/ImagineerJourney";
+import ImagineerDesignSpec from "@/components/ImagineerDesignSpec";
+import ImagineerBrandExtension from "@/components/ImagineerBrandExtension";
 
 function sectionId(title: string) {
   return title.replace(/\s+/g, "-");
@@ -82,6 +84,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     if (section.variant === "ai-mechanism") return <ImagineerAIMechanism />;
     if (section.variant === "architecture") return <ImagineerArchitecture />;
     if (section.variant === "imagineer-journey") return <ImagineerJourney />;
+    if (section.variant === "design-spec") return <ImagineerDesignSpec />;
+    if (section.variant === "brand-extension") return <ImagineerBrandExtension />;
     return (
       <ul className="mt-5 space-y-4">
         {section.items.map((item) => (

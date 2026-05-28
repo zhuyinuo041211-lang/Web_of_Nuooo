@@ -69,6 +69,213 @@ const leftLabels = [
   { icon: "❤️", label: "用户情绪" },
 ];
 
+// ── Storyboard Data ──
+
+type StoryboardPanel = {
+  scene: string;
+  img: string;
+  title: string;
+  desc: string;
+  story: string;
+  aiRole: string;
+  bgFrom: string;
+  bgTo: string;
+};
+
+const storyboardPanels: StoryboardPanel[] = [
+  {
+    scene: "📱",
+    img: "/storyBoard_1.png",
+    title: "发起邀请",
+    desc: "孩子查看在线好友并发起创作邀请",
+    story: "小宇打开平板，看到好朋友也在线上，迫不及待地点下了「邀请」按钮。",
+    aiRole: "AI 推荐在线好友，辅助发送邀请通知",
+    bgFrom: "from-amber-100/60",
+    bgTo: "to-amber-50/30",
+  },
+  {
+    scene: "💭",
+    img: "/storyBoard_2.png",
+    title: "表达想法",
+    desc: "孩子将脑海中的零散想法告诉 AI",
+    story: "\"我想讲一个关于小松鼠的故事……它找到了一朵会飞的蘑菇！\"小宇对着屏幕比划着。",
+    aiRole: "AI 理解碎片化表达，转化为完整通顺的句子",
+    bgFrom: "from-orange-100/60",
+    bgTo: "to-orange-50/30",
+  },
+  {
+    scene: "🎨",
+    img: "/storyBoard_3.png",
+    title: "场景生成",
+    desc: "AI 根据故事内容实时生成场景画面",
+    story: "话音刚落，屏幕上就出现了小松鼠站在闪闪发光的蘑菇上。小宇惊喜地叫了出来。",
+    aiRole: "图像 AI 将文字描述转为直观视觉场景，激发想象力",
+    bgFrom: "from-emerald-100/60",
+    bgTo: "to-emerald-50/30",
+  },
+  {
+    scene: "🧭",
+    img: "/storyBoard_4.png",
+    title: "价值引导",
+    desc: "故事情节出现价值观偏差，AI 及时介入",
+    story: "\"小松鼠要把所有蘑菇都抢走！\"AI 温柔地问：\"如果你是蘑菇，你希望小松鼠怎么做呢？\"",
+    aiRole: "AI 识别偏差内容，以提问方式引导正向思考",
+    bgFrom: "from-sky-100/60",
+    bgTo: "to-sky-50/30",
+  },
+  {
+    scene: "📖",
+    img: "/storyBoard_5.png",
+    title: "故事完成",
+    desc: "AI 辅助梳理完整故事框架",
+    story: "一问一答中，故事悄悄长大了——从相遇、冒险到分享的温馨结局，完整而流畅。",
+    aiRole: "AI 确保故事有开头、过程、结尾，逻辑连贯",
+    bgFrom: "from-violet-100/60",
+    bgTo: "to-violet-50/30",
+  },
+  {
+    scene: "📚",
+    img: "/storyBoard_6.png",
+    title: "书集定制",
+    desc: "选择多个故事定制专属故事书",
+    story: "\"我还要把上次的故事也放进来！\"小宇兴奋地挑选着，定制了一本属于自己的故事书。",
+    aiRole: "AI 推荐故事组合方案，辅助封面和顺序设计",
+    bgFrom: "from-amber-100/60",
+    bgTo: "to-amber-50/30",
+  },
+  {
+    scene: "🎉",
+    img: "/storyBoard_7.png",
+    title: "分享收获",
+    desc: "收到实体故事书，分享给家人朋友",
+    story: "几天后，小宇收到了印着自己名字的实体书，迫不及待地读给妈妈听。",
+    aiRole: "AI 生成个性化寄语和推荐语，记录成长",
+    bgFrom: "from-pink-100/60",
+    bgTo: "to-pink-50/30",
+  },
+];
+
+// ── Storyboard S-Curve Component ──
+
+function StoryboardPanels({ visible }: { visible: boolean }) {
+  return (
+    <div className="relative">
+      {/* Desktop: alternating left/right */}
+      <div className="hidden md:block">
+        <div className="relative">
+          {storyboardPanels.map((panel, i) => {
+            const isLeft = i % 2 === 0;
+            const delay = 200 + i * 120;
+            return (
+              <div key={i} style={{ opacity: visible ? 1 : 0, transition: `all 0.6s ease-out ${delay}ms` }}>
+                <div className="flex items-stretch gap-6 mb-8">
+                  {isLeft ? (
+                    <>
+                      <div className="relative w-[55%]">
+                        <div className="relative overflow-hidden rounded-3xl border-2 border-amber-200/50 bg-white shadow-md">
+                          <div className="absolute -top-1 -left-1 z-10 flex h-10 w-10 items-center justify-center rounded-br-2xl bg-amber-800 text-sm font-bold text-white shadow-md">
+                            {i + 1}
+                          </div>
+                          <div className={`flex h-44 items-center justify-center bg-gradient-to-br ${panel.bgFrom} ${panel.bgTo} overflow-hidden`}>
+                            <img src={panel.img} alt={panel.title} className="h-full w-full object-cover" />
+                          </div>
+                          <div className="flex items-center justify-between gap-3 px-5 py-3">
+                            <div className="min-w-0 flex-1">
+                              <p className="text-sm font-bold text-[#1d1d1f]">{panel.title}</p>
+                              <p className="mt-0.5 text-[11px] leading-relaxed text-apple-gray">{panel.desc}</p>
+                            </div>
+                            <div className="shrink-0 rounded-lg border border-emerald-200/60 bg-emerald-50/80 px-2.5 py-1.5 text-center">
+                              <span className="text-[9px] font-semibold text-emerald-800 leading-tight">🤖 {panel.aiRole}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex w-[40%] items-center">
+                        <div className="relative rounded-2xl bg-amber-50/70 px-5 py-6 shadow-sm">
+                          <p className="text-sm leading-relaxed text-amber-900/80 italic">{panel.story}</p>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex w-[40%] items-center">
+                        <div className="relative rounded-2xl bg-amber-50/70 px-5 py-6 shadow-sm">
+                          <p className="text-sm leading-relaxed text-amber-900/80 italic">{panel.story}</p>
+                        </div>
+                      </div>
+                      <div className="relative w-[55%]">
+                        <div className="relative overflow-hidden rounded-3xl border-2 border-amber-200/50 bg-white shadow-md">
+                          <div className="absolute -top-1 -left-1 z-10 flex h-10 w-10 items-center justify-center rounded-br-2xl bg-amber-800 text-sm font-bold text-white shadow-md">
+                            {i + 1}
+                          </div>
+                          <div className={`flex h-44 items-center justify-center bg-gradient-to-br ${panel.bgFrom} ${panel.bgTo} overflow-hidden`}>
+                            <img src={panel.img} alt={panel.title} className="h-full w-full object-cover" />
+                          </div>
+                          <div className="flex items-center justify-between gap-3 px-5 py-3">
+                            <div className="min-w-0 flex-1">
+                              <p className="text-sm font-bold text-[#1d1d1f]">{panel.title}</p>
+                              <p className="mt-0.5 text-[11px] leading-relaxed text-apple-gray">{panel.desc}</p>
+                            </div>
+                            <div className="shrink-0 rounded-lg border border-emerald-200/60 bg-emerald-50/80 px-2.5 py-1.5 text-center">
+                              <span className="text-[9px] font-semibold text-emerald-800 leading-tight">🤖 {panel.aiRole}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Mobile: vertical list */}
+      <div className="space-y-5 md:hidden">
+        {storyboardPanels.map((panel, i) => {
+          const delay = 200 + i * 100;
+          return (
+            <div
+              key={i}
+              style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? "translateX(0)" : "translateX(-20px)",
+                transition: `all 0.5s ease-out ${delay}ms`,
+              }}
+            >
+              <div className="relative overflow-hidden rounded-2xl border-2 border-amber-200/50 bg-white shadow-sm">
+                <div className="absolute -top-1 -left-1 z-10 flex h-8 w-8 items-center justify-center rounded-br-2xl bg-amber-800 text-xs font-bold text-white shadow-sm">
+                  {i + 1}
+                </div>
+                <div className={`flex h-28 items-center justify-center bg-gradient-to-br ${panel.bgFrom} ${panel.bgTo} overflow-hidden`}>
+                  <img src={panel.img} alt={panel.title} className="h-full w-full object-cover" />
+                </div>
+                <div className="flex items-center justify-between gap-2 px-4 py-2.5">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold text-[#1d1d1f]">{panel.title}</p>
+                    <p className="mt-0.5 text-[10px] leading-relaxed text-apple-gray">{panel.desc}</p>
+                  </div>
+                  <div className="shrink-0 rounded-lg border border-emerald-200/60 bg-emerald-50/80 px-2 py-1">
+                    <span className="text-[8px] font-semibold text-emerald-800 leading-tight">
+                      🤖 {panel.aiRole}
+                    </span>
+                  </div>
+                </div>
+                <div className="rounded-b-2xl border-t border-amber-200/30 bg-amber-50/60 px-4 py-3">
+                  <p className="text-[11px] leading-relaxed text-amber-900/70 italic">
+                    {panel.story}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 // ── Stage Card ──
 
 function StageColumn({
@@ -159,7 +366,7 @@ export default function ImagineerJourney() {
         }`}
       >
         {/* ── Header ── */}
-        <div className="mb-6 flex items-center gap-4">
+        <div className="mb-6 flex flex-col items-center gap-3 text-center">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-sm md:h-14 md:w-14">
             <img
               src="/imagineer_boy_avatar.jpg"
@@ -354,6 +561,14 @@ export default function ImagineerJourney() {
               </div>
             );
           })}
+        </div>
+
+        {/* ── Storyboard: S-curve comic panels ── */}
+        <div className="mt-14">
+          <h4 className="mb-8 text-center text-base font-bold text-amber-800 md:text-lg">
+            🎬 行为故事版 — AI 引导下的创作之旅
+          </h4>
+          <StoryboardPanels visible={visible} />
         </div>
       </div>
     </div>

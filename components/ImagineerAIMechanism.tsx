@@ -139,13 +139,13 @@ export default function ImagineerAIMechanism() {
               </p>
               <div className="mt-3 flex flex-1 items-center justify-center gap-3 rounded-xl border border-amber-200/60 bg-amber-50/60 px-4 py-4">
                 <div className="flex flex-col items-center gap-1">
-                  <span className="text-xl">👦</span>
-                  <span className="text-[10px] font-medium text-amber-800">小宇</span>
+                  <span className="text-xl">🧑</span>
+                  <span className="text-[10px] font-medium text-amber-800">角色1</span>
                 </div>
                 <span className="text-base text-amber-400">+</span>
                 <div className="flex flex-col items-center gap-1">
-                  <span className="text-xl">👫</span>
-                  <span className="text-[10px] font-medium text-amber-800">好友</span>
+                  <span className="text-xl">🧒</span>
+                  <span className="text-[10px] font-medium text-amber-800">角色2</span>
                 </div>
                 <svg
                   width="16"

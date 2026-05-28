@@ -12,7 +12,7 @@ export type ProjectSection = {
   images?: string[];
   childImages?: string[];
   personas?: Persona[];
-  variant?: "research" | "concept" | "blueprint" | "journey" | "tech" | "personas" | "ai-mechanism" | "architecture" | "imagineer-journey";
+  variant?: "research" | "concept" | "blueprint" | "journey" | "tech" | "personas" | "ai-mechanism" | "architecture" | "imagineer-journey" | "design-spec" | "brand-extension";
 };
 
 export type Project = {
@@ -137,19 +137,14 @@ export const projects: Project[] = [
       },
       {
         title: "设计规范",
-        items: [
-          "字体：阿里巴巴普惠体（48px Bold 大标题 / 40px Bold 模块标题 / 32px Medium 按钮文字 / 28px Regular 正文 / 24px Regular 提示文字）",
-          "主色：#C6E3A1、#566B1F；辅助色：#9FCCEF、#91C88F、#FDC76A",
-          "LOGO：书本 + 眼睛元素，绿黄配色，多尺寸多配色版本"
-        ]
+        variant: "design-spec",
+        items: []
       },
       {
         title: "品牌衍生",
-        items: [
-          "实体故事书、帆布袋、贴纸、文创礼盒等周边",
-          "移动端适配：角色创建、语音输入、AI 画面生成、云端存储、多端同步"
-        ]
-      }
+        variant: "brand-extension",
+        items: []
+      },
     ],
     tags: ["AI APPLICATION", "INTERACTION DESIGN", "CHILDREN UX"],
     image: "/imagineer_cover.png",
