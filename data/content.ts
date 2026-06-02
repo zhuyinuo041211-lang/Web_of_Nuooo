@@ -12,7 +12,7 @@ export type ProjectSection = {
   images?: string[];
   childImages?: string[];
   personas?: Persona[];
-  variant?: "research" | "concept" | "blueprint" | "journey" | "tech" | "personas" | "ai-mechanism" | "architecture" | "imagineer-journey" | "design-spec" | "brand-extension";
+  variant?: "research" | "concept" | "blueprint" | "journey" | "tech" | "personas" | "ai-mechanism" | "architecture" | "imagineer-journey" | "design-spec" | "brand-extension" | "popbox-feature-overview";
 };
 
 export type Project = {
@@ -42,67 +42,77 @@ export type ExperienceItem = {
 
 export const projects: Project[] = [
   {
-    name: "Yooho",
-    slug: "yooho",
-    category: "体验设计",
-    description: "浙江大学校医院用户体检与就医体验设计",
+    name: "PopBox",
+    slug: "popbox",
+    category: "AI 产品",
+    description: "为潮玩赋予生命的 AI 陪伴舱",
     details:
-      "通过调研、环境改造与产品设计，为校医院带来全新的患者就医方式。聚焦普通医疗流程，解决学生与中老年居民在挂号、导航、候诊、缴费、取药等环节的痛点，设计以交互圆盘为核心的智能就医系统。",
+      "PopBox 是一款基于 M5Stack CoreS3 的桌面陪伴盲盒原型，将实体硬件与 AI 语音交互相结合。用户通过语音与盲盒角色进行自然对话，角色根据人设与世界观生成个性化回应；支持拍照识别任意盲盒角色，自动从联网搜索补全角色资料与背景故事。项目以生成式 AI 为技术核心（Qwen 系列模型），构建了「语音交互 → AI 角色扮演 → 视觉识别 → 记忆沉淀」的完整产品闭环，后端提供 STT / 对话 / 角色识别统一 API 接口，同时支持硬件端（CoreS3）与网页端（Web Speech API）双端运行。",
     background:
-      "浙江大学校医院为非营利性综合性医院，规模小（一栋两层带天井的楼），业务以门诊、开药、简单检查、体检为主，无住院服务。本次设计聚焦普通医疗流程，不考虑急诊。",
+      "近年来，潮玩逐渐从收藏品演变为年轻人的情感载体。人们购买盲盒的原因早已不只是获得一个玩具，而是在角色身上寄托陪伴、治愈与情绪价值。然而，当拆盒的惊喜结束后，大多数潮玩又重新回归静态展示状态，被摆放在柜子或桌面的一角，难以持续建立情感连接。与此同时，AI 技术的发展让数字角色拥有了记忆、性格与表达能力。我们开始思考：如果潮玩不再只是被收藏的物件，而是能够回应、成长、交流的陪伴者，会为人与潮玩的关系带来怎样的改变？",
     sections: [
       {
-        title: "前期调研",
+        title: "功能概览",
+        variant: "popbox-feature-overview",
+        items: []
+      },
+      {
+        title: "系统架构",
         items: [
-          "用户痛点：学生流程繁琐、排队多、票据多易丢、体验差；中老年居民智能机不熟、挂号缴费困难、叫号不清晰、容易错过",
-          "问卷调研：发放 100 份，收集有效反馈，重点：科室清晰度、叫号满意度、环境满意度、候诊无聊程度",
-          "用户行为研究 + 影子法：模拟从预约到就诊全流程，跟随用户深度体验",
-          "工作坊 + 用户访谈：访谈 4 名学生、1 名医务工作者、1 名老师、2 位居民"
+          "硬件端（CoreS3）：C++/Arduino 固件，负责录音、拍照、屏幕显示与触摸交互；通过 WiFi 与后端通信",
+          "后端服务器（Express）：提供 /api/stt（语音转文字）、/api/chat（对话生成）、/api/recognize（视觉识别）三大核心 API",
+          "AI 引擎：Qwen-turbo 用于轻量聊天、Qwen3.6-plus 用于视觉角色识别、Qwen-plus 用于联网搜索补全",
+          "网页模拟器：HTML/CSS/JS 前端，使用浏览器 Web Speech API 替代 Google STT，与硬件共享同一后端"
         ]
       },
       {
-        title: "挂号系统设计",
+        title: "硬件交互设计",
         items: [
-          "保留机器 + 人工双通道",
-          "取消纸质票据，改为发放交互小圆盘",
-          "圆盘承载个人身份与医疗信息，后续全流程用圆盘交互"
+          "硬件基于 M5Stack CoreS3（ESP32-S3），内置 320×240 触摸屏、麦克风、前置相机与 WiFi",
+          "欢迎页：开机显示「等待人物入住」，点击「识别角色」拍照或任意处进入角色选择",
+          "角色选择页：最多 3 个角色卡片排成一行，含头像 + 名字，底部配备「拍照识别」按钮",
+          "待机页：选中角色后全屏头像 + 名字展示，双击屏幕唤醒对话",
+          "对话页：顶部头像 + 状态，中部角色回复文字区域，底部双按钮——左按钮录音（点击开始/停止）、右按钮拍照识别角色"
         ]
       },
       {
-        title: "地图导航系统设计",
+        title: "语音对话机制",
         items: [
-          "导航集成于小圆盘",
-          "智能判断目的地（诊室、缴费机、卫生间等）",
-          "可与电子地图交互，查看位置、路线",
-          "支持无障碍导航"
+          "用户按住录音按钮开始说话，松开后 PCM 音频发送至后端 /api/stt（Google Cloud Speech-to-Text）",
+          "后端将识别文字与对话历史拼接上下文，调用 Qwen-turbo 生成角色个性化回复",
+          "对话记录实时持久化到 JSON 文件，重启后自动加载历史上下文",
+          "网页版使用浏览器内置 Web Speech API（无需 Google STT Key），降低开发门槛",
+          "回复风格严格遵循角色人设中的性格、世界观与 reply_style 定义"
         ]
       },
       {
-        title: "诊室外排队系统设计",
+        title: "视觉识别流程",
         items: [
-          "用交互显示屏替代传统号码牌",
-          "显示排队信息、医生状态、候诊人数",
-          "用户通过圆盘交互：查看虚拟形象排队、切换表情，缓解无聊"
+          "用户点击「识别角色」后，CoreS3 前置相机拍摄盲盒角色照片",
+          "JPEG 图片发送至后端 /api/recognize，Qwen3.6-plus（支持视觉 + 联网搜索）分析图片",
+          "自动生成完整角色 JSON（id、name、series、catchphrases、personality、worldview、background、reply_style）",
+          "必要时 Qwen-plus 启用联网搜索，补全角色所属 IP 的背景资料与粉丝共识",
+          "生成的 JSON 直接作为角色人设，无需手动编写——真正实现「拍照即入住」"
         ]
       },
       {
-        title: "取药系统 & 候诊区优化",
+        title: "网页模拟器",
         items: [
-          "就诊后用圆盘在缴费机一键缴费",
-          "医生智能配置药品信息至出口",
-          "患者交还圆盘即可取药，无需纸质票据多次交互",
-          "利用闲置天井打造休息区、办公学习区、便民服务区"
+          "纯前端 HTML/CSS/JS 实现，外观与交互完整模拟 CoreS3 320×240 屏幕体验",
+          "支持语音对话（Chrome 内置 Web Speech API）与文字输入两种交互方式",
+          "支持上传图片模拟拍照识别角色，便于快速测试与演示",
+          "与硬件端共享同一后端服务器，保证双端行为一致",
+          "适合无硬件环境下的开发调试与产品展示"
         ]
       }
     ],
-    tags: ["SERVICE DESIGN", "UX DESIGN"],
-    image:
-      "https://images.unsplash.com/photo-1551281044-8f1f0d4b5f89?auto=format&fit=crop&w=1200&q=80",
+    tags: ["AI APPLICATION", "HARDWARE", "INTERACTION DESIGN", "VIBECODING"],
+    image: "/popbox_cover.png",
     deliverables: [
-      "用户旅程图与服务蓝图",
-      "交互圆盘硬件设计",
-      "导航/排队/取药系统方案",
-      "候诊区环境优化"
+      "CoreS3 硬件固件与交互设计",
+      "后端语音/对话/识别 API 服务",
+      "视觉角色识别与自动人设填充",
+      "双端网页模拟器"
     ]
   },
   {
