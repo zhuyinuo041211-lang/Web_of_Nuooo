@@ -17,6 +17,7 @@ import ImagineerJourney from "@/components/ImagineerJourney";
 import ImagineerDesignSpec from "@/components/ImagineerDesignSpec";
 import ImagineerBrandExtension from "@/components/ImagineerBrandExtension";
 import PopBoxFeatureOverview from "@/components/PopBoxFeatureOverview";
+import PopBoxArchitecture from "@/components/PopBoxArchitecture";
 
 function sectionId(title: string) {
   return title.replace(/\s+/g, "-");
@@ -88,6 +89,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     if (section.variant === "design-spec") return <ImagineerDesignSpec />;
     if (section.variant === "brand-extension") return <ImagineerBrandExtension />;
     if (section.variant === "popbox-feature-overview") return <PopBoxFeatureOverview />;
+    if (section.variant === "popbox-architecture") return <PopBoxArchitecture />;
     return (
       <ul className="mt-5 space-y-4">
         {section.items.map((item) => (

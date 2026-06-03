@@ -85,37 +85,19 @@ const featureDetails: { label: string; items: string[]; image?: string }[] = [
   {
     label: "情绪陪伴",
     items: [
-      "基于 Qwen 语言模型，角色能理解用户情感与意图，依据人设做出符合性格的回应",
-      "语音对话全流程：按住录音 → PCM 音频 → Google STT 转文字 → Qwen 生成回复",
-      "多轮上下文管理：后端实时拼接对话历史，让角色「记得」之前聊了什么",
-      "待机时主动「刷存在感」——屏幕表情变化和文字提示，传达陪伴感",
-    ],
-  },
-  {
-    label: "长期记忆",
-    items: [
-      "对话历史 JSON 持久化存储，按角色归档，重启后自动恢复上下文",
-      "每日归档独立文件（history_<charId>_<YYYY-MM-DD>.json），支持按时间回溯",
-      "上下文构建策略：当天完整对话 + 历史 Top-K 相关片段（TF-IDF 粗筛 + BM25 精排）",
-      "角色在对话中引用过去细节，让用户感受到「被记住」的真实陪伴感",
+      "角色能{{理解你的情绪}}——开心时陪你欢呼，低落时默默倾听。每一次对话都会成为角色与你之间的{{共同记忆}}，下次再聊时，它会记得你提过的喜好、分享过的小事。按住说话就能和它自然交流，像朋友一样聊天。即使在待机时，角色也会通过屏幕表情和文字提示主动「刷存在感」——不是冷冰冰的工具，而是桌面上的一个小伙伴，陪伴感随时间越来越深。",
     ],
   },
   {
     label: "角色共生",
     items: [
-      "支持最多 3 个角色同时「入住」，每个角色独立人设与记忆空间",
-      "角色选择页：3 个角色卡片排成一行，轻触切换当前活跃角色",
-      "多角色关系网络（规划中）：角色之间可互动剧情，形成独特角色生态",
-      "旅行日志（规划中）+ IMU 体感互动（摇一摇换角色、轻拍触发摸头反应）",
+      "PopBox 支持最多 {{3 个角色同时「入住」}}，每个角色都有{{独立的性格和记忆空间}}。角色选择页上，三个角色卡片排成一行，轻触即可切换当前对话的角色。未来角色之间还能互动聊天，形成属于它们自己的小生态；旅行日志会记录每个角色与你的独特经历，轻拍或摇一摇等体感互动也在规划中——让每个角色都像是{{住在同一个屋檐下的室友}}，各有个性，又彼此陪伴。",
     ],
   },
   {
     label: "生命舱展示",
     items: [
-      "PopBox 硬件基于 M5Stack CoreS3，320×240 触摸屏 + 麦克风 + 前置相机",
-      "欢迎页全屏展示角色头像与名字，双击唤醒对话，待机时如精致桌面摆件",
-      "拍照识别流程：点击「识别角色」→ 拍照 → Qwen VL 识别 → 角色「入住」",
-      "兼具潮玩收纳与智能展示——既是 AI 交互终端，也是桌面上的角色展示柜",
+      "PopBox 既是 {{AI 交互终端}}，也是桌面上的精致展示柜。开机后全屏展示角色头像与名字，双击唤醒即可对话，待机时静置如优雅的桌面摆件，为你的桌面增添一份{{治愈氛围}}。点击「拍照识别」即可让新角色「入住」，无需任何配置——插电即用，让你的潮玩在桌面上拥有一个{{属于自己的小家园}}。",
     ],
   },
 ];
@@ -240,7 +222,7 @@ export default function PopBoxFeatureOverview() {
               style={{
                 left: `${x}%`,
                 top: `${y}%`,
-                width: "clamp(100px, 22vw, 160px)",
+                width: "clamp(120px, 26vw, 190px)",
                 transform: visible
                   ? "translate(-50%, -50%) scale(1)"
                   : "translate(-50%, -50%) scale(0.5)",
@@ -251,7 +233,7 @@ export default function PopBoxFeatureOverview() {
               onMouseLeave={() => setHoveredIdx(null)}
             >
               <div
-                className="rounded-xl p-3 md:p-4 text-center transition-all duration-300"
+                className="rounded-xl p-3 md:p-5 text-center transition-all duration-300"
                 style={{
                   background: hoveredIdx === i ? "white" : "rgba(255,255,255,0.7)",
                   border: `1px solid ${
@@ -265,15 +247,15 @@ export default function PopBoxFeatureOverview() {
                 }}
               >
                 <div
-                  className="w-6 h-6 md:w-7 md:h-7 mx-auto mb-1.5 transition-colors duration-300"
+                  className="w-7 h-7 md:w-8 md:h-8 mx-auto mb-2 transition-colors duration-300"
                   style={{ color: hoveredIdx === i ? "#FF3B30" : "rgba(0,0,0,0.35)" }}
                 >
                   {f.svg}
                 </div>
-                <h4 className="text-[11px] md:text-xs font-semibold text-[#1d1d1f] mb-0.5">
+                <h4 className="text-xs md:text-sm font-semibold text-[#1d1d1f] mb-1">
                   {f.label}
                 </h4>
-                <p className="text-[9px] md:text-[10px] leading-relaxed text-apple-gray">
+                <p className="text-[10px] md:text-xs leading-relaxed text-apple-gray">
                   {f.desc}
                 </p>
               </div>
@@ -299,7 +281,7 @@ export default function PopBoxFeatureOverview() {
                 className="w-6 h-6 md:w-7 md:h-7"
                 style={{ color: "rgba(255,59,48,0.7)" }}
               >
-                {features[idx].svg}
+                {features.find(f => f.label === detail.label)?.svg}
               </div>
               <h4 className="text-sm md:text-base font-semibold text-[#1d1d1f]">
                 {detail.label}
@@ -307,8 +289,8 @@ export default function PopBoxFeatureOverview() {
             </div>
             <div className="flex flex-col md:flex-row gap-4 md:gap-6 md:items-center">
               {detail.items.length === 1 ? (
-                <div className="flex-1" style={{ lineHeight: 2 }}>
-                  <HighlightText className="text-xs md:text-sm text-apple-gray" text={detail.items[0]} />
+                <div className="flex-1">
+                  <HighlightText className="text-xs md:text-sm !leading-[2.1] text-apple-gray" text={detail.items[0]} />
                 </div>
               ) : (
                 <ul className="space-y-2 flex-1">
@@ -339,7 +321,7 @@ export default function PopBoxFeatureOverview() {
 
       {/* Bottom tagline */}
       <div
-        className="text-center mt-10 md:mt-12"
+        className="text-center mt-10 md:mt-12 mb-8 md:mb-16"
         style={{
           opacity: visible ? 1 : 0,
           transition: "opacity 0.6s ease 0.4s",

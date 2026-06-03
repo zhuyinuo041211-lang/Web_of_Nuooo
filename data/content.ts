@@ -58,12 +58,8 @@ export const projects: Project[] = [
       },
       {
         title: "系统架构",
-        items: [
-          "硬件端（CoreS3）：C++/Arduino 固件，负责录音、拍照、屏幕显示与触摸交互；通过 WiFi 与后端通信",
-          "后端服务器（Express）：提供 /api/stt（语音转文字）、/api/chat（对话生成）、/api/recognize（视觉识别）三大核心 API",
-          "AI 引擎：Qwen-turbo 用于轻量聊天、Qwen3.6-plus 用于视觉角色识别、Qwen-plus 用于联网搜索补全",
-          "网页模拟器：HTML/CSS/JS 前端，使用浏览器 Web Speech API 替代 Google STT，与硬件共享同一后端"
-        ]
+        variant: "popbox-architecture",
+        items: []
       },
       {
         title: "硬件交互设计",
@@ -76,33 +72,21 @@ export const projects: Project[] = [
         ]
       },
       {
-        title: "语音对话机制",
+        title: "网页端交互设计",
         items: [
-          "用户按住录音按钮开始说话，松开后 PCM 音频发送至后端 /api/stt（Google Cloud Speech-to-Text）",
-          "后端将识别文字与对话历史拼接上下文，调用 Qwen-turbo 生成角色个性化回复",
-          "对话记录实时持久化到 JSON 文件，重启后自动加载历史上下文",
-          "网页版使用浏览器内置 Web Speech API（无需 Google STT Key），降低开发门槛",
-          "回复风格严格遵循角色人设中的性格、世界观与 reply_style 定义"
+          "网页端完整复刻了硬件端的{{核心交互体验}}，在浏览器中模拟 CoreS3 的 320×240 屏幕界面。支持语音（Web Speech API）与文字两种输入方式，上传图片即可模拟拍照识别流程。网页端与硬件{{共享同一后端}}，保证双端体验一致——没有硬件也能快速体验 PopBox 的核心功能。",
         ]
       },
       {
-        title: "视觉识别流程",
+        title: "VibeCoding 工作流",
         items: [
-          "用户点击「识别角色」后，CoreS3 前置相机拍摄盲盒角色照片",
-          "JPEG 图片发送至后端 /api/recognize，Qwen3.6-plus（支持视觉 + 联网搜索）分析图片",
-          "自动生成完整角色 JSON（id、name、series、catchphrases、personality、worldview、background、reply_style）",
-          "必要时 Qwen-plus 启用联网搜索，补全角色所属 IP 的背景资料与粉丝共识",
-          "生成的 JSON 直接作为角色人设，无需手动编写——真正实现「拍照即入住」"
+          "PopBox 的开发采用 {{Vibe Coding}} 模式——以 AI 辅助编程为核心，从硬件固件到后端服务再到网页前端，全程与 AI 协作迭代。先通过自然语言描述需求，AI 生成初版代码，再基于实际运行效果不断调整优化——让想法能{{快速原型化}}，大幅缩短从概念到可交互原型的周期。",
         ]
       },
       {
-        title: "网页模拟器",
+        title: "商业前景",
         items: [
-          "纯前端 HTML/CSS/JS 实现，外观与交互完整模拟 CoreS3 320×240 屏幕体验",
-          "支持语音对话（Chrome 内置 Web Speech API）与文字输入两种交互方式",
-          "支持上传图片模拟拍照识别角色，便于快速测试与演示",
-          "与硬件端共享同一后端服务器，保证双端行为一致",
-          "适合无硬件环境下的开发调试与产品展示"
+          "PopBox 探索了{{「AI + 潮玩」}}的新品类可能性——让收藏品从静态展示进化为{{有生命的陪伴终端}}。面向潮玩爱好者与桌面科技产品用户，可衍生出角色订阅内容、IP 联名限定版、角色记忆云存储等商业模式。硬件以 M5Stack CoreS3 为基础平台，具备从{{极客 DIY 到消费级产品}}的扩展路径。",
         ]
       }
     ],
@@ -110,9 +94,9 @@ export const projects: Project[] = [
     image: "/popbox_cover.png",
     deliverables: [
       "CoreS3 硬件固件与交互设计",
-      "后端语音/对话/识别 API 服务",
+      "网页端交互设计",
       "视觉角色识别与自动人设填充",
-      "双端网页模拟器"
+      "VibeCoding 开发工作流"
     ]
   },
   {
