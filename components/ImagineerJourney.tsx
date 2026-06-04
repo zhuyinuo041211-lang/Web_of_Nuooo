@@ -13,6 +13,23 @@ type Stage = {
   highlights: string[];
 };
 
+function EmotionCurve({ points, animate, delay }: { points: { value: number }[]; animate: boolean; delay?: number }) {
+  const h = 60;
+  const w = 200;
+  const maxVal = Math.max(...points.map(p => Math.abs(p.value)), 1);
+  const stepX = points.length > 1 ? w / (points.length - 1) : w;
+  const d = points.map((p, i) => {
+    const x = i * stepX;
+    const y = h / 2 - (p.value / maxVal) * (h / 2 - 4);
+    return (i === 0 ? "M" : "L") + x.toFixed(1) + "," + y.toFixed(1);
+  }).join(" ");
+  return (
+    <svg viewBox={"0 0 " + w + " " + h} className="w-full h-12" style={{ opacity: animate ? 1 : 0, transition: "opacity 0.5s ease " + (delay ?? 0) + "ms" }}>
+      <path d={d} fill="none" stroke="#D97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 const stages: Stage[] = [
   {
     title: "邀请好友",

@@ -157,7 +157,7 @@ export default function ImagineerArchitecture() {
               好友
             </div>
             <div className="my-3 h-5 w-0.5 bg-amber-200/50" />
-            <ChildList children={modules[0].children} />
+            <ChildList children={modules[0].children ?? []} />
           </div>
 
           {/* 首页 */}
@@ -167,7 +167,7 @@ export default function ImagineerArchitecture() {
               首页
             </div>
             <div className="my-3 h-5 w-0.5 bg-amber-200/50" />
-            <ChildList children={modules[1].children} />
+            <ChildList children={modules[1].children ?? []} />
 
             {/* 合并箭头 */}
             <div className="my-1 flex flex-col items-center">

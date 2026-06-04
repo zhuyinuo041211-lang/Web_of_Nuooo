@@ -12,7 +12,7 @@ export type ProjectSection = {
   images?: string[];
   childImages?: string[];
   personas?: Persona[];
-  variant?: "research" | "concept" | "blueprint" | "journey" | "tech" | "personas" | "ai-mechanism" | "architecture" | "imagineer-journey" | "design-spec" | "brand-extension" | "popbox-feature-overview";
+  variant?: "research" | "concept" | "blueprint" | "journey" | "tech" | "personas" | "ai-mechanism" | "architecture" | "imagineer-journey" | "design-spec" | "brand-extension" | "popbox-feature-overview" | "popbox-architecture" | "popbox-web-ui" | "popbox-business";
 };
 
 export type Project = {
