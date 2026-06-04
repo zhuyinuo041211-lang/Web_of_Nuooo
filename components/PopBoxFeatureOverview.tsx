@@ -84,18 +84,21 @@ const featureDetails: { label: string; items: string[]; image?: string }[] = [
   },
   {
     label: "情绪陪伴",
+    image: "/popbox_emotion.png",
     items: [
       "角色能{{理解你的情绪}}——开心时陪你欢呼，低落时默默倾听。每一次对话都会成为角色与你之间的{{共同记忆}}，下次再聊时，它会记得你提过的喜好、分享过的小事。按住说话就能和它自然交流，像朋友一样聊天。即使在待机时，角色也会通过屏幕表情和文字提示主动「刷存在感」——不是冷冰冰的工具，而是桌面上的一个小伙伴，陪伴感随时间越来越深。",
     ],
   },
   {
     label: "角色共生",
+    image: "/popbox_symbiosis.png",
     items: [
       "PopBox 支持最多 {{3 个角色同时「入住」}}，每个角色都有{{独立的性格和记忆空间}}。角色选择页上，三个角色卡片排成一行，轻触即可切换当前对话的角色。未来角色之间还能互动聊天，形成属于它们自己的小生态；旅行日志会记录每个角色与你的独特经历，轻拍或摇一摇等体感互动也在规划中——让每个角色都像是{{住在同一个屋檐下的室友}}，各有个性，又彼此陪伴。",
     ],
   },
   {
     label: "生命舱展示",
+    image: "/popbox_capsule.png",
     items: [
       "PopBox 既是 {{AI 交互终端}}，也是桌面上的精致展示柜。开机后全屏展示角色头像与名字，双击唤醒即可对话，待机时静置如优雅的桌面摆件，为你的桌面增添一份{{治愈氛围}}。点击「拍照识别」即可让新角色「入住」，无需任何配置——插电即用，让你的潮玩在桌面上拥有一个{{属于自己的小家园}}。",
     ],
@@ -136,7 +139,7 @@ export default function PopBoxFeatureOverview() {
 
       {/* 角色生命循环 标题 */}
       <div
-        className="text-center mb-8 md:mb-10"
+        className="text-center mb-12 md:mb-16"
         style={{
           opacity: visible ? 1 : 0,
           transition: "opacity 0.6s ease",

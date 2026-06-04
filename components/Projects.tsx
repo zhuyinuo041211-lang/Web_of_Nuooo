@@ -12,6 +12,20 @@ export default function Projects() {
         {projects.map((project) => (
           <ProjectCard key={project.name} project={project} />
         ))}
+
+        {/* More coming */}
+        <div className="group block">
+          <article>
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-dashed border-apple-border/30 bg-white/30 flex items-center justify-center transition-all duration-500 group-hover:border-accent/30 group-hover:bg-accent/[0.02]">
+              <div className="text-center">
+                <span className="text-3xl md:text-4xl block mb-3 opacity-30 group-hover:opacity-40 transition-opacity">+</span>
+                <p className="text-sm text-apple-gray/50 group-hover:text-apple-gray/70 transition-colors">
+                  更多项目正在添加中
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
   );
