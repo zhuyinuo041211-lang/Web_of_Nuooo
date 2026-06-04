@@ -75,10 +75,10 @@ export default function TechRoadmap() {
       <div className={`transition-all duration-700 ${visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
         {/* 顶部说明 */}
         <div className="mb-8 text-center">
-          <span className="inline-block rounded-full bg-accent/10 px-4 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-accent">
+          <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-[#b0b0b0] mb-3">
             Tech Stack
-          </span>
-          <p className="mt-3 text-sm leading-relaxed text-apple-gray">
+          </p>
+          <p className="text-sm leading-relaxed text-[#8a8a8a]">
             从硬件到 AI 的完整技术方案
           </p>
         </div>
@@ -87,29 +87,29 @@ export default function TechRoadmap() {
           {categories.map((cat, i) => (
             <div
               key={cat.title}
-              className="rounded-2xl border border-apple-border/20 bg-white/60 p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card-hover md:p-6"
+              className="border p-5 transition-all duration-300 hover:bg-[#FFF0F3] md:p-6"
               style={{
+                borderColor: "#FFD1DC",
                 opacity: visible ? 1 : 0,
-                transform: visible ? "translateY(0)" : "translateY(16px)",
                 transitionDelay: `${i * 150}ms`
               }}
             >
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-lg">
+                <span className="flex h-10 w-10 items-center justify-center border text-lg" style={{ borderColor: "#FFD1DC" }}>
                   {cat.icon}
                 </span>
-                <h3 className="text-base font-semibold text-[#1d1d1f]">{cat.title}</h3>
+                <h3 className="text-base font-semibold text-[#1a1a1a]">{cat.title}</h3>
               </div>
 
               <div className="mt-5 space-y-3.5">
                 {cat.items.map((item) => (
-                  <div key={item.label} className="border-b border-apple-border/10 pb-3 last:border-0 last:pb-0">
+                  <div key={item.label} className="pb-3 last:pb-0" style={{ borderBottom: "1px solid #FFD1DC" }}>
                     <div className="flex items-baseline gap-2">
-                      <span className="shrink-0 rounded-md bg-accent/8 px-2 py-0.5 text-[11px] font-medium text-accent">
+                      <span className="shrink-0 border px-2 py-0.5 text-[11px] font-medium text-[#8a8a8a]" style={{ borderColor: "#FFD1DC" }}>
                         {item.label}
                       </span>
                     </div>
-                    <p className="mt-1.5 text-xs leading-relaxed text-apple-gray">
+                    <p className="mt-1.5 text-xs leading-relaxed text-[#8a8a8a]">
                       {item.detail}
                     </p>
                   </div>

@@ -68,14 +68,13 @@ export default function PopBoxWebUI() {
   }, []);
 
   return (
-    <div ref={ref} className="w-full space-y-8">
+    <div ref={ref} className="w-full space-y-6">
       {/* Description */}
       <p
-        className="text-xs md:text-sm text-apple-gray leading-relaxed"
+        className="text-xs md:text-sm text-[#8a8a8a] leading-relaxed"
         style={{
           opacity: visible ? 1 : 0,
-          transform: visible ? "translateY(0)" : "translateY(8px)",
-          transition: "opacity 0.5s ease, transform 0.5s ease",
+          transition: "opacity 0.5s ease",
         }}
       >
         网页端为 PopBox 提供了沉浸式角色管理面板，包含四大核心模块：
@@ -85,17 +84,16 @@ export default function PopBoxWebUI() {
       {modules.map((mod, idx) => (
         <div
           key={mod.title}
-          className="rounded-2xl border bg-white/70 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:shadow-md"
+          className="border transition-all duration-500 hover:bg-[#f9f9f9]"
           style={{
+            borderColor: "var(--border)",
             opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(20px)",
             transitionDelay: `${0.1 + idx * 0.12}s`,
-            borderColor: "rgba(0,0,0,0.06)",
           }}
         >
           <div className="flex flex-col md:flex-row gap-0">
             {/* Image area */}
-            <div className="md:w-2/5 shrink-0 bg-white flex items-center justify-center min-h-[200px] relative">
+            <div className="md:w-2/5 shrink-0 bg-white flex items-center justify-center min-h-[200px]">
               {mod.image ? (
                 <Image
                   src={mod.image}
@@ -106,27 +104,22 @@ export default function PopBoxWebUI() {
                   unoptimized
                 />
               ) : (
-                <span className="text-xs text-apple-gray/40">等待配图</span>
+                <span className="text-xs text-[#d4d4d4]">等待配图</span>
               )}
             </div>
 
             {/* Text content */}
             <div className="flex-1 p-5 md:p-6">
-              <div className="flex items-center justify-between mb-2">
-                <div>
-                  <h4 className="text-base font-semibold text-[#1d1d1f]">{mod.title}</h4>
-                  <p className="text-[10px] text-apple-gray/60 font-mono tracking-wider mt-0.5">{mod.subtitle}</p>
-                </div>
-                <span className="text-[10px] font-medium uppercase tracking-wider text-apple-gray bg-white/70 rounded-full px-2.5 py-0.5 border border-apple-border/20">
-                  {mod.badge}
-                </span>
+              <div className="mb-3">
+                <h4 className="text-base font-semibold text-[#1a1a1a]">{mod.title}</h4>
+                <p className="text-[10px] text-[#b0b0b0] font-mono tracking-wider mt-0.5">{mod.subtitle}</p>
               </div>
-              <div className="space-y-2.5 mt-4">
+              <div className="space-y-2.5">
                 {mod.items.map((item) => (
                   <p
                     key={item}
-                    className="text-xs md:text-sm text-apple-gray leading-relaxed pl-3 border-l-2"
-                    style={{ borderColor: "rgba(0,0,0,0.08)" }}
+                    className="text-xs md:text-sm text-[#8a8a8a] leading-relaxed pl-3 border-l-2"
+                    style={{ borderColor: "var(--border)" }}
                   >
                     {item}
                   </p>
@@ -139,7 +132,7 @@ export default function PopBoxWebUI() {
 
       {/* Bottom note */}
       <p
-        className="text-center text-[11px] text-apple-gray/40 tracking-wider"
+        className="text-center text-[10px] text-[#d4d4d4] tracking-wider"
         style={{
           opacity: visible ? 1 : 0,
           transition: "opacity 0.6s ease 0.5s",

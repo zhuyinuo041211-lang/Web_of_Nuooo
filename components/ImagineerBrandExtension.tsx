@@ -29,45 +29,39 @@ export default function ImagineerBrandExtension() {
 
   return (
     <div ref={ref} className="space-y-8">
-      {/* 周边产品 */}
       <div
-        className="rounded-2xl border border-amber-200/50 bg-white/40 p-6 md:p-7 transition-all duration-500"
+        className="border p-6 md:p-7 transition-all duration-500"
         style={{
+          borderColor: "#CDE3A1",
           opacity: visible ? 1 : 0,
-          transform: visible ? "translateY(0)" : "translateY(20px)",
           transitionDelay: "100ms",
         }}
       >
-        <h3 className="text-base font-bold text-amber-800 md:text-lg">周边产品</h3>
+        <h3 className="text-base font-bold text-[#566B1F] md:text-lg">周边产品</h3>
         <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {merchItems.map((item) => (
             <div
               key={item.label}
-              className="flex flex-col items-center rounded-xl border border-amber-100/60 bg-white/60 p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
+              className="flex flex-col items-center border p-5 transition-all duration-200 hover:bg-[#CDE3A1]" style={{ borderColor: "#CDE3A1" }}
             >
               {item.image ? (
-                <div className="relative w-full aspect-square mb-3 rounded-lg overflow-hidden bg-amber-50">
-                  <img
-                    src={item.image}
-                    alt={item.label}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="relative w-full aspect-square mb-3 overflow-hidden" style={{ backgroundColor: "#CDE3A1" }}>
+                  <img src={item.image} alt={item.label} className="w-full h-full object-cover" />
                 </div>
               ) : (
-                <div className="w-full aspect-square mb-3 rounded-lg bg-gradient-to-br from-amber-50 to-amber-100/40 flex items-center justify-center border border-amber-100/50">
+                <div className="w-full aspect-square mb-3 border flex items-center justify-center" style={{ borderColor: "#CDE3A1" }}>
                   <div className="flex flex-col items-center gap-1">
-                    <span className="text-3xl">{item.icon}</span>
-                    <span className="text-[9px] text-amber-300/70 tracking-wide">图片占位</span>
+                    <span className="text-3xl" >{item.icon}</span>
+                    <span className="text-[9px] text-[#91C88F] tracking-wide">图片占位</span>
                   </div>
                 </div>
               )}
-              <p className="text-sm font-semibold text-[#1d1d1f]">{item.label}</p>
-              <p className="mt-1 text-[10px] text-center text-apple-gray">{item.desc}</p>
+              <p className="text-sm font-semibold text-[#566B1F]">{item.label}</p>
+              <p className="mt-1 text-[10px] text-center text-[#8a8a8a]">{item.desc}</p>
             </div>
           ))}
         </div>
       </div>
-
     </div>
   );
 }

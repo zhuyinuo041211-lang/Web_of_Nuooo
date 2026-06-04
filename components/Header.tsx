@@ -6,17 +6,17 @@ const navItems = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-apple-border/40 glass">
-      <div className="container-apple flex h-12 items-center justify-between md:h-14">
-        <a href="/" className="text-sm font-semibold tracking-tight text-[#1d1d1f]">
-          朱一诺
+    <header className="sticky top-0 z-50 bg-white border-b hairline" style={{ borderColor: "var(--border)" }}>
+      <div className="container-apple flex h-14 items-center justify-between md:h-16">
+        <a href="/" className="text-sm font-semibold tracking-tight text-[#1a1a1a]">
+          ZHU YINUO
         </a>
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-8">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-xs text-apple-gray transition-colors hover:text-[#1d1d1f]"
+              className="text-xs tracking-wider text-[#8a8a8a] transition-colors hover:text-[#1a1a1a]"
             >
               {item.label}
             </a>

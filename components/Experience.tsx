@@ -1,24 +1,26 @@
 import { experiences } from "@/data/content";
+import SectionTitle from "./SectionTitle";
 
 export default function Experience() {
   return (
-    <section className="container-apple py-16 md:py-24">
-      <div className="mx-auto max-w-[640px]">
-        <h2 className="text-section">经历</h2>
-        <div className="mt-10 space-y-8">
-          {experiences.map((item, index) => (
-            <article
+    <section className="py-[75px]">
+      <div className="container-apple">
+        <SectionTitle number="04" title="经历" />
+        <div className="mx-auto max-w-[640px]">
+          {experiences.map((item) => (
+            <div
               key={item.year + item.title}
-              className="group rounded-2xl glass px-6 py-6 shadow-card transition-all duration-300 hover:shadow-card-hover md:px-8 md:py-7"
+              className="py-6 md:py-7 border-t last:border-b px-0 transition-all duration-300 hover:bg-white -mx-6 md:-mx-10 px-6 md:px-10"
+              style={{ borderColor: "var(--border)" }}
             >
               <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
-                <h3 className="text-base font-semibold text-[#1d1d1f]">{item.title}</h3>
-                <span className="inline-block rounded-full bg-apple-light px-3 py-0.5 text-[11px] font-medium text-apple-gray">
+                <h3 className="text-sm font-semibold text-[#1a1a1a]">{item.title}</h3>
+                <span className="text-[11px] font-mono tracking-wider text-[#b0b0b0]">
                   {item.year}
                 </span>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-apple-gray">{item.description}</p>
-            </article>
+              <p className="mt-2 text-sm leading-relaxed text-[#8a8a8a]">{item.description}</p>
+            </div>
           ))}
         </div>
       </div>

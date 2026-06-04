@@ -6,68 +6,26 @@ import HighlightText from "./HighlightText";
 
 const features = [
   {
-    svg: (
-      <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
-        <path d="M20 4v8M14 8h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <path d="M12 20a8 8 0 0 1 16 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <path d="M20 28v8M14 32h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.3" />
-        <circle cx="20" cy="20" r="3" stroke="currentColor" strokeWidth="1.5" />
-      </svg>
-    ),
     label: "角色赋生",
     desc: "根据人设，为每个潮玩生成专属人格、背景故事与性格特征。",
     angle: -90,
   },
   {
-    svg: (
-      <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
-        <path d="M12 28c0-4 3.5-7 8-7s8 3 8 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="20" cy="14" r="5" stroke="currentColor" strokeWidth="2" />
-        <path d="M4 30h8l4-8 4 8h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.3" />
-      </svg>
-    ),
     label: "情绪陪伴",
     desc: "角色能够理解用户情绪，并主动表达关心与陪伴。",
     angle: -18,
   },
   {
-    svg: (
-      <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
-        <rect x="6" y="4" width="28" height="32" rx="4" stroke="currentColor" strokeWidth="2" />
-        <path d="M14 14l5 5 7-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M14 26h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
-        <path d="M14 20h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.2" />
-      </svg>
-    ),
     label: "长期记忆",
     desc: "记录与用户共同经历的故事，形成独特关系。",
     angle: 54,
   },
   {
-    svg: (
-      <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
-        <circle cx="14" cy="16" r="6" stroke="currentColor" strokeWidth="2" />
-        <circle cx="26" cy="16" r="6" stroke="currentColor" strokeWidth="2" />
-        <path d="M10 30c2-4 6-6 10-6s8 2 10 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
-        <path d="M18 16l2-2 2 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
-      </svg>
-    ),
     label: "角色共生",
     desc: "多个角色可自主交流、建立关系并产生互动剧情。",
     angle: 126,
   },
   {
-    svg: (
-      <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
-        <rect x="6" y="8" width="28" height="24" rx="3" stroke="currentColor" strokeWidth="2" />
-        <path d="M6 18h28" stroke="currentColor" strokeWidth="2" opacity="0.2" />
-        <circle cx="14" cy="13" r="1.5" fill="currentColor" opacity="0.5" />
-        <circle cx="26" cy="13" r="1.5" fill="currentColor" opacity="0.5" />
-        <path d="M12 28a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="20" cy="22" r="2" fill="currentColor" opacity="0.2" />
-      </svg>
-    ),
     label: "生命舱展示",
     desc: "兼具收藏展示、灯光氛围与潮玩收纳功能。",
     angle: 198,
@@ -126,30 +84,18 @@ export default function PopBoxFeatureOverview() {
 
   return (
     <div ref={ref} className="relative w-full">
-      <style>{`
-        @keyframes popCenterFloat {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
-        }
-        @keyframes popRipple {
-          0% { transform: scale(0.7); opacity: 0.5; }
-          100% { transform: scale(1.4); opacity: 0; }
-        }
-      `}</style>
-
       {/* 角色生命循环 标题 */}
       <div
         className="text-center mb-12 md:mb-16"
         style={{
           opacity: visible ? 1 : 0,
           transition: "opacity 0.6s ease",
-          transform: visible ? "translateY(0)" : "translateY(8px)",
         }}
       >
-        <p className="text-xs text-accent/60 font-medium uppercase tracking-[0.15em] mb-2">
+        <p className="text-[10px] text-[#b0b0b0] font-medium uppercase tracking-[0.15em] mb-3">
           角色生命循环
         </p>
-        <h3 className="text-xl md:text-2xl font-semibold text-[#1d1d1f]">
+        <h3 className="text-xl md:text-2xl font-semibold text-[#1a1a1a]">
           五大核心能力
         </h3>
       </div>
@@ -157,49 +103,24 @@ export default function PopBoxFeatureOverview() {
       {/* Orbit container */}
       <div
         className="relative mx-auto"
-        style={{ maxWidth: 520, aspectRatio: "1/1" }}
+        style={{ maxWidth: 480, aspectRatio: "1/1" }}
       >
-        {/* Center glow bg */}
+        {/* Orbit rings */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
-          style={{
-            width: "60%",
-            height: "60%",
-            background:
-              "radial-gradient(circle, rgba(255,59,48,0.06) 0%, transparent 70%)",
-          }}
-        />
-
-        {/* Orbit ring */}
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/10"
-          style={{ width: "88%", height: "88%" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border"
+          style={{ width: "88%", height: "88%", borderColor: "rgba(0,0,0,0.08)" }}
         />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/5"
-          style={{ width: "70%", height: "70%" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border"
+          style={{ width: "70%", height: "70%", borderColor: "rgba(0,0,0,0.04)" }}
         />
 
         {/* Center product */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
-          style={{ width: "22%", aspectRatio: "1/1" }}
+          style={{ width: "20%", aspectRatio: "1/1" }}
         >
-          <div
-            className="relative w-full h-full"
-            style={{
-              animation: visible ? "popCenterFloat 4s ease-in-out infinite" : "none",
-            }}
-          >
-          <div
-            className="absolute inset-0 rounded-full border border-accent/15"
-            style={{ animation: visible ? "popRipple 3s ease-out infinite" : "none" }}
-          />
-          <div
-            className="absolute inset-0 rounded-full border border-accent/10"
-            style={{ animation: visible ? "popRipple 3s ease-out 1s infinite" : "none" }}
-          />
-          <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white shadow-md">
+          <div className="relative w-full h-full rounded-full overflow-hidden border" style={{ borderColor: "var(--border)" }}>
             <Image
               src="/popbox_feature_center.png"
               alt="Pop Box"
@@ -209,7 +130,6 @@ export default function PopBoxFeatureOverview() {
             />
           </div>
         </div>
-      </div>
 
         {/* Feature modules on orbit */}
         {features.map((f, i) => {
@@ -225,40 +145,27 @@ export default function PopBoxFeatureOverview() {
               style={{
                 left: `${x}%`,
                 top: `${y}%`,
-                width: "clamp(120px, 26vw, 190px)",
+                width: "clamp(110px, 24vw, 170px)",
                 transform: visible
-                  ? "translate(-50%, -50%) scale(1)"
+                  ? "translate(-50%, -50%)"
                   : "translate(-50%, -50%) scale(0.5)",
                 opacity: visible ? 1 : 0,
-                transition: `all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${0.1 + i * 0.08}s`,
+                transition: `all 0.5s ease ${0.1 + i * 0.08}s`,
               }}
               onMouseEnter={() => setHoveredIdx(i)}
               onMouseLeave={() => setHoveredIdx(null)}
             >
               <div
-                className="rounded-xl p-3 md:p-5 text-center transition-all duration-300"
+                className="p-3 md:p-4 text-center transition-all duration-300 border"
                 style={{
-                  background: hoveredIdx === i ? "white" : "rgba(255,255,255,0.7)",
-                  border: `1px solid ${
-                    hoveredIdx === i ? "rgba(255,59,48,0.2)" : "rgba(0,0,0,0.06)"
-                  }`,
-                  boxShadow:
-                    hoveredIdx === i
-                      ? "0 8px 24px rgba(255,59,48,0.1)"
-                      : "0 2px 8px rgba(0,0,0,0.04)",
-                  transform: hoveredIdx === i ? "translateY(-2px)" : "none",
+                  background: hoveredIdx === i ? "#f5f5f5" : "#ffffff",
+                  borderColor: "var(--border)",
                 }}
               >
-                <div
-                  className="w-7 h-7 md:w-8 md:h-8 mx-auto mb-2 transition-colors duration-300"
-                  style={{ color: hoveredIdx === i ? "#FF3B30" : "rgba(0,0,0,0.35)" }}
-                >
-                  {f.svg}
-                </div>
-                <h4 className="text-xs md:text-sm font-semibold text-[#1d1d1f] mb-1">
+                <p className="text-xs md:text-sm font-semibold text-[#1a1a1a] mb-1">
                   {f.label}
-                </h4>
-                <p className="text-[10px] md:text-xs leading-relaxed text-apple-gray">
+                </p>
+                <p className="text-[10px] md:text-xs leading-relaxed text-[#8a8a8a]">
                   {f.desc}
                 </p>
               </div>
@@ -268,52 +175,45 @@ export default function PopBoxFeatureOverview() {
       </div>
 
       {/* Expanded feature details */}
-      <div className="mt-10 md:mt-12 space-y-6">
+      <div className="mt-10 md:mt-14 space-y-6">
         {featureDetails.map((detail, idx) => (
           <div
             key={detail.label}
-            className="rounded-xl border border-accent/10 bg-white/60 p-5 md:p-6 transition-all duration-300 hover:shadow-sm"
+            className="border p-5 md:p-6 transition-all duration-300 hover:bg-[#f9f9f9]"
             style={{
+              borderColor: "var(--border)",
               opacity: visible ? 1 : 0,
-              transform: visible ? "translateY(0)" : "translateY(12px)",
-              transition: `opacity 0.5s ease ${0.2 + idx * 0.1}s, transform 0.5s ease ${0.2 + idx * 0.1}s`,
+              transition: `opacity 0.5s ease ${0.2 + idx * 0.1}s, background 0.3s ease`,
             }}
           >
-            <div className="flex items-center gap-3 mb-3">
-              <div
-                className="w-6 h-6 md:w-7 md:h-7"
-                style={{ color: "rgba(255,59,48,0.7)" }}
-              >
-                {features.find(f => f.label === detail.label)?.svg}
-              </div>
-              <h4 className="text-sm md:text-base font-semibold text-[#1d1d1f]">
-                {detail.label}
-              </h4>
-            </div>
+            <h4 className="text-sm md:text-base font-semibold text-[#1a1a1a] mb-4">
+              {detail.label}
+            </h4>
             <div className="flex flex-col md:flex-row gap-4 md:gap-6 md:items-center">
               {detail.items.length === 1 ? (
                 <div className="flex-1">
-                  <HighlightText className="text-xs md:text-sm !leading-[2.1] text-apple-gray" text={detail.items[0]} />
+                  <HighlightText className="text-xs md:text-sm !leading-[2.1] text-[#8a8a8a]" text={detail.items[0]} />
                 </div>
               ) : (
                 <ul className="space-y-2 flex-1">
                   {detail.items.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-2 text-xs md:text-sm leading-relaxed text-apple-gray"
+                      className="flex items-start gap-2 text-xs md:text-sm leading-relaxed text-[#8a8a8a]"
                     >
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent/40" />
+                      <span className="mt-2 h-px w-3 shrink-0 bg-[#d4d4d4]" />
                       {item}
                     </li>
                   ))}
                 </ul>
               )}
               {detail.image && (
-                <div className="shrink-0 w-full md:w-72 relative rounded-lg overflow-hidden border border-accent/10">
+                <div className="shrink-0 w-full md:w-64 relative">
                   <img
                     src={detail.image}
                     alt={detail.label}
-                    className="w-full h-auto"
+                    className="w-full h-auto border"
+                    style={{ borderColor: "var(--border)" }}
                   />
                 </div>
               )}
@@ -324,14 +224,13 @@ export default function PopBoxFeatureOverview() {
 
       {/* Bottom tagline */}
       <div
-        className="text-center mt-10 md:mt-12 mb-8 md:mb-16"
+        className="text-center mt-10 md:mt-14 mb-8 md:mb-16"
         style={{
           opacity: visible ? 1 : 0,
           transition: "opacity 0.6s ease 0.4s",
-          transform: visible ? "translateY(0)" : "translateY(8px)",
         }}
       >
-        <p className="text-sm md:text-base text-apple-gray font-light leading-relaxed italic">
+        <p className="text-sm md:text-base text-[#8a8a8a] leading-relaxed">
           &ldquo;让喜欢的角色，不再只是收藏品，而成为真正陪伴你的存在。&rdquo;
         </p>
       </div>

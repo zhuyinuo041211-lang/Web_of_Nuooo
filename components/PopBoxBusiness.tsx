@@ -43,31 +43,29 @@ export default function PopBoxBusiness() {
     <div ref={ref} className="w-full">
       {/* Top description */}
       <p
-        className="text-xs md:text-sm text-apple-gray leading-relaxed mb-6"
+        className="text-xs md:text-sm text-[#8a8a8a] leading-relaxed mb-6"
         style={{
           opacity: visible ? 1 : 0,
-          transform: visible ? "translateY(0)" : "translateY(8px)",
-          transition: "opacity 0.5s ease, transform 0.5s ease",
+          transition: "opacity 0.5s ease",
         }}
       >
         PopBox 探索了 AI + 潮玩的新品类可能性——让收藏品从静态展示进化为有生命的陪伴终端。
       </p>
 
-      {/* Business model cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {/* Business model grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px border-t border-l" style={{ borderColor: "var(--border)" }}>
         {businessModels.map((model, idx) => (
           <div
             key={model.title}
-            className="rounded-xl border bg-white/70 backdrop-blur-sm p-5 transition-all duration-500 hover:shadow-md hover:-translate-y-0.5"
+            className="p-5 border-r border-b transition-all duration-300 hover:bg-[#f9f9f9]"
             style={{
+              borderColor: "var(--border)",
               opacity: visible ? 1 : 0,
-              transform: visible ? "translateY(0)" : "translateY(16px)",
               transitionDelay: `${0.1 + idx * 0.1}s`,
-              borderColor: "rgba(0,0,0,0.06)",
             }}
           >
-            <h4 className="text-sm font-semibold text-[#1d1d1f] mb-1.5">{model.title}</h4>
-            <p className="text-xs leading-relaxed text-apple-gray">{model.desc}</p>
+            <h4 className="text-sm font-semibold text-[#1a1a1a] mb-1.5">{model.title}</h4>
+            <p className="text-xs leading-relaxed text-[#8a8a8a]">{model.desc}</p>
           </div>
         ))}
       </div>

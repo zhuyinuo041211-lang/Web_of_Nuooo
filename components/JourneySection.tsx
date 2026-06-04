@@ -83,20 +83,12 @@ const journeyStages: JourneyStage[] = [
   }
 ];
 
-const emotionLabels = ["", "低落", "平淡", "还行", "开心", "兴奋"];
-
 function EmotionBadge({ value }: { value: number }) {
-  const colors = [
-    "",
-    "bg-red-100 text-red-500 border-red-200",
-    "bg-orange-100 text-orange-500 border-orange-200",
-    "bg-yellow-100 text-yellow-600 border-yellow-200",
-    "bg-lime-100 text-lime-600 border-lime-200",
-    "bg-emerald-100 text-emerald-600 border-emerald-200"
-  ];
+  const shades = ["", "border-[#FFD1DC] text-[#b0b0b0]", "border-[#FFB3C1] text-[#8a8a8a]", "border-[#FF8FA3] text-[#1a1a1a]", "border-[#FF6B8A] text-[#1a1a1a]", "border-[#FF6B8A] text-[#1a1a1a]"];
+  const labels = ["", "低落", "平淡", "还行", "开心", "兴奋"];
   return (
-    <span className={`inline-block rounded-full border px-2.5 py-0.5 text-[10px] font-semibold ${colors[value]}`}>
-      {emotionLabels[value]}
+    <span className={`inline-block border px-2.5 py-0.5 text-[10px] font-medium ${shades[value]}`}>
+      {labels[value]}
     </span>
   );
 }
@@ -132,16 +124,16 @@ export default function JourneySection() {
       <div className={`transition-all duration-700 ${visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
         {/* 顶部说明 */}
         <div className="mb-8 text-center">
-          <span className="inline-block rounded-full bg-accent/10 px-4 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-accent">
+          <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-[#b0b0b0] mb-3">
             User Journey
-          </span>
-          <p className="mt-3 text-sm leading-relaxed text-apple-gray">
+          </p>
+          <p className="text-sm leading-relaxed text-[#8a8a8a]">
             以孩子为主体的完整使用旅程，从开箱到攒钱达成的情感曲线
           </p>
         </div>
 
         {/* === User Journey Image === */}
-        <div className="mb-8 overflow-hidden rounded-2xl border border-apple-border/20 bg-white/60 shadow-sm">
+        <div className="mb-8 border" style={{ borderColor: "#FFD1DC" }}>
           <div className="relative w-full">
             <Image
               src="/财小喵旅程图.png"
@@ -157,7 +149,7 @@ export default function JourneySection() {
         {/* === Stage Cards === */}
         <div className="relative">
           {/* 连接线 */}
-          <div className="absolute left-[23px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent via-accent/50 to-accent/10 md:left-[29px]" />
+          <div className="absolute left-[23px] top-0 bottom-0 w-0.5 bg-[#FFB3C1] md:left-[29px]" />
 
           <div className="space-y-6">
             {journeyStages.map((stage, i) => (
@@ -173,34 +165,26 @@ export default function JourneySection() {
                 <div className="flex gap-4 md:gap-6">
                   {/* 时间轴节点 */}
                   <div className="relative flex flex-col items-center">
-                    <div
-                      className={`flex h-[46px] w-[46px] items-center justify-center rounded-2xl text-lg shadow-sm transition-all duration-300 md:h-[58px] md:w-[58px] md:text-xl ${
-                        stage.emotion >= 4
-                          ? "bg-emerald-100 text-emerald-600"
-                          : stage.emotion === 3
-                          ? "bg-amber-100 text-amber-600"
-                          : "bg-orange-100 text-orange-500"
-                      }`}
-                    >
+                    <div className="flex h-[46px] w-[46px] items-center justify-center text-lg border md:h-[58px] md:w-[58px] md:text-xl" style={{ borderColor: "#FFD1DC" }}>
                       {stage.icon}
                     </div>
                   </div>
 
                   {/* 内容卡片 */}
-                  <div className="min-w-0 flex-1 rounded-2xl border border-apple-border/20 bg-white/60 p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card-hover md:p-6">
+                  <div className="min-w-0 flex-1 border p-5 transition-all duration-300 hover:bg-[#FFF0F3] md:p-6" style={{ borderColor: "#FFD1DC" }}>
                     <div className="flex flex-wrap items-center gap-2 md:gap-3">
-                      <h4 className="text-base font-semibold text-[#1d1d1f]">{stage.phase}</h4>
-                      <span className="text-[11px] text-apple-gray">{stage.subtitle}</span>
+                      <h4 className="text-base font-semibold text-[#1a1a1a]">{stage.phase}</h4>
+                      <span className="text-[11px] text-[#8a8a8a]">{stage.subtitle}</span>
                       <EmotionBadge value={stage.emotion} />
                     </div>
 
                     {/* 用户行为 */}
                     <div className="mt-4">
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-accent">用户行为</span>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-[#8a8a8a]">用户行为</span>
                       <ul className="mt-2 space-y-1.5">
                         {stage.actions.map((action) => (
-                          <li key={action} className="flex items-start gap-2 text-xs leading-relaxed text-apple-gray">
-                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent/60" />
+                          <li key={action} className="flex items-start gap-2 text-xs leading-relaxed text-[#8a8a8a]">
+                            <span className="mt-2 h-px w-3 shrink-0 bg-[#FFB3C1]" />
                             {action}
                           </li>
                         ))}
@@ -208,9 +192,9 @@ export default function JourneySection() {
                     </div>
 
                     {/* 内心想法 */}
-                    <div className="mt-3 rounded-xl bg-accent/5 px-4 py-3">
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-accent">内心想法</span>
-                      <p className="mt-1 text-xs italic leading-relaxed text-apple-gray">
+                    <div className="mt-3 border px-4 py-3" style={{ borderColor: "#FFD1DC" }}>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-[#8a8a8a]">内心想法</span>
+                      <p className="mt-1 text-xs italic leading-relaxed text-[#8a8a8a]">
                         &ldquo;{stage.thoughts}&rdquo;
                       </p>
                     </div>
@@ -218,7 +202,7 @@ export default function JourneySection() {
                     {/* 触达点 */}
                     <div className="mt-3 flex flex-wrap gap-1.5">
                       {stage.touchpoints.map((tp) => (
-                        <span key={tp} className="rounded-full border border-apple-border/20 bg-white/50 px-2.5 py-0.5 text-[10px] text-apple-gray">
+                        <span key={tp} className="border px-2.5 py-0.5 text-[10px] text-[#8a8a8a]" style={{ borderColor: "#FFD1DC" }}>
                           {tp}
                         </span>
                       ))}

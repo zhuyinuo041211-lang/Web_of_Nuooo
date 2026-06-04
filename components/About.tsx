@@ -1,20 +1,23 @@
 import Image from "next/image";
 import { aboutParagraphs } from "@/data/content";
+import SectionTitle from "./SectionTitle";
 
 export default function About() {
   return (
-    <section id="about" className="container-apple py-16 md:py-24">
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.3fr_0.9fr] md:gap-16">
-        <div className="space-y-6">
-          <h2 className="text-section">个人简介</h2>
-          <div className="space-y-5 rounded-2xl glass p-7 text-sm leading-7 text-apple-gray shadow-card md:p-8 md:text-base md:leading-8">
+    <section id="about" className="container-apple py-[75px]">
+      <SectionTitle number="03" title="个人简介" />
+      <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.3fr_0.9fr] md:gap-20">
+        <div>
+          <div className="space-y-6">
             {aboutParagraphs.map((text) => (
-              <p key={text}>{text}</p>
+              <p key={text} className="text-sm leading-7 text-[#8a8a8a] md:text-base md:leading-8">
+                {text}
+              </p>
             ))}
           </div>
         </div>
         <div className="relative">
-          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-apple-border/30 shadow-card">
+          <div className="relative aspect-[3/4] w-full overflow-hidden border" style={{ borderColor: "var(--border)" }}>
             <Image
               src="/my_photo.png"
               alt="个人照片"
@@ -23,11 +26,11 @@ export default function About() {
               sizes="(max-width: 768px) 100vw, 30vw"
             />
           </div>
-          <div className="absolute -bottom-3 -left-3 right-3 rounded-xl glass px-5 py-4 shadow-card backdrop-blur-xl">
-            <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-accent">
-              目前研究方向
+          <div className="mt-6 pt-6 border-t" style={{ borderColor: "var(--border)" }}>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#b0b0b0]">
+              <span className="text-[#1a1a1a]">//</span> 目前研究方向
             </p>
-            <p className="mt-1 text-sm font-medium text-[#1d1d1f]">
+            <p className="mt-2 text-sm text-[#1a1a1a]">
               产品服务体系设计 / 体验设计 / 用户研究
             </p>
           </div>

@@ -8,12 +8,23 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main
+      style={{
+        backgroundImage: `
+          linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px)
+        `,
+        backgroundSize: "100px 100px",
+      }}
+    >
       <Header />
       <Hero />
       <Projects />
+      <div className="hairline" />
       <About />
+      <div className="hairline" />
       <Skills />
+      <div className="hairline" />
       <Experience />
       <Footer />
     </main>

@@ -11,11 +11,11 @@ const cashRateData = [
 ];
 
 const factorData = [
-  { label: "金钱认知", percentage: 30, color: "#fb7a4a" },
-  { label: "储蓄意识", percentage: 25, color: "#f9a06b" },
-  { label: "消费观念", percentage: 20, color: "#f5c078" },
-  { label: "投资启蒙", percentage: 15, color: "#e8d58a" },
-  { label: "社会责任", percentage: 10, color: "#d4e8a0" },
+  { label: "金钱认知", percentage: 30 },
+  { label: "储蓄意识", percentage: 25 },
+  { label: "消费观念", percentage: 20 },
+  { label: "投资启蒙", percentage: 15 },
+  { label: "社会责任", percentage: 10 },
 ];
 
 const painPoints = [
@@ -30,16 +30,6 @@ const competitors = [
   { name: "绘本 / 书籍", desc: "理论为主，说教意味重，孩子无法应用到生活" },
   { name: "电子存钱罐", desc: "缺乏实践引导，无法将财商知识落地" },
 ];
-
-const donutStyle = {
-  background: `conic-gradient(
-    #fb7a4a 0% 30%,
-    #f9a06b 30% 55%,
-    #f5c078 55% 75%,
-    #e8d58a 75% 90%,
-    #d4e8a0 90% 100%
-  )`,
-};
 
 export default function ResearchSection() {
   const [visible, setVisible] = useState(false);
@@ -66,9 +56,9 @@ export default function ResearchSection() {
           visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
         }`}
       >
-        {/* ===== 中心视觉（桌面端显示） ===== */}
+        {/* ===== 中心视觉 ===== */}
         <div className="mb-6 flex justify-center md:mb-8">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full border border-apple-border/20 bg-white shadow-elevated md:h-20 md:w-20">
+          <div className="flex h-16 w-16 items-center justify-center border md:h-20 md:w-20" style={{ borderColor: "#FFD1DC" }}>
             <span className="text-3xl md:text-4xl">🐱</span>
           </div>
         </div>
@@ -76,91 +66,104 @@ export default function ResearchSection() {
         {/* ===== 2×2 网格 ===== */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
           {/* ---------- 左上：核心数据 ---------- */}
-          <div className="rounded-2xl border border-apple-border/20 bg-white/60 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover md:p-6">
-            <h3 className="text-sm font-semibold text-accent">核心数据背景</h3>
-            <p className="mt-1 text-base font-medium text-[#1d1d1f]">
+          <div className="border p-5 transition-all duration-300 hover:bg-[#FFF0F3] md:p-6" style={{ borderColor: "#FFD1DC" }}>
+            <h3 className="text-sm font-semibold text-[#1a1a1a]">核心数据背景</h3>
+            <p className="mt-1 text-base font-medium text-[#1a1a1a]">
               移动支付时代的消费行为变迁
             </p>
 
             <div className="mt-5 flex items-end gap-2 md:gap-3">
               {cashRateData.map((d) => (
                 <div key={d.year} className="flex flex-1 flex-col items-center gap-1.5">
-                  <span className="text-xs font-semibold text-accent">{d.rate}%</span>
-                  <div className="relative flex h-28 w-full items-end justify-center rounded-md bg-accent/5 md:h-32">
+                  <span className="text-xs font-semibold text-[#1a1a1a]">{d.rate}%</span>
+                  <div className="relative flex h-28 w-full items-end justify-center border md:h-32" style={{ borderColor: "#FFD1DC" }}>
                     <div
-                      className="w-full rounded-t-md transition-all duration-1000"
+                      className="w-full transition-all duration-1000"
                       style={{
                         height: visible ? `${d.rate}%` : "0%",
-                        backgroundColor:
-                          d.rate > 50 ? "#fb7a4a" : d.rate > 30 ? "#f9a06b" : "#f5c078",
+                        backgroundColor: "#FF6B8A",
                       }}
                     />
                   </div>
-                  <span className="text-[10px] text-apple-gray">{d.year}</span>
+                  <span className="text-[10px] text-[#8a8a8a]">{d.year}</span>
                 </div>
               ))}
             </div>
-            <p className="mt-3 text-xs leading-relaxed text-apple-gray">
+            <p className="mt-3 text-xs leading-relaxed text-[#8a8a8a]">
               现金支付使用率从
-              <span className="font-semibold text-[#1d1d1f]"> 75%（2012）</span>
+              <span className="font-semibold text-[#1a1a1a]"> 75%（2012）</span>
               降至
-              <span className="font-semibold text-[#1d1d1f]"> 20%（2024）</span>；
+              <span className="font-semibold text-[#1a1a1a]"> 20%（2024）</span>；
               2023 年移动支付普及率已达
-              <span className="font-semibold text-[#1d1d1f]"> 86%</span>
+              <span className="font-semibold text-[#1a1a1a]"> 86%</span>
             </p>
           </div>
 
           {/* ---------- 右上：核心维度 ---------- */}
-          <div className="rounded-2xl border border-apple-border/20 bg-white/60 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover md:p-6">
-            <h3 className="text-sm font-semibold text-accent">财商教育核心维度</h3>
-            <p className="mt-1 text-base font-medium text-[#1d1d1f]">
+          <div className="border p-5 transition-all duration-300 hover:bg-[#FFF0F3] md:p-6" style={{ borderColor: "#FFD1DC" }}>
+            <h3 className="text-sm font-semibold text-[#1a1a1a]">财商教育核心维度</h3>
+            <p className="mt-1 text-base font-medium text-[#1a1a1a]">
               关键因素及权重占比
             </p>
 
             <div className="mt-5 flex flex-col items-center gap-5 sm:flex-row">
-              {/* 环形图 */}
+              {/* 环形图 - monochrome */}
               <div className="relative h-28 w-28 shrink-0">
-                <div
-                  className="h-full w-full rounded-full shadow-inner"
-                  style={donutStyle}
-                />
-                <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-sm" />
+                <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
+                  {factorData.map((f, i) => {
+                    const offset = factorData.slice(0, i).reduce((s, x) => s + x.percentage, 0);
+                    const dashArray = f.percentage * 2.83;
+                    const dashOffset = -offset * 2.83;
+                    const pinkShades = ["#FF6B8A", "#FF8FA3", "#FFB3C1", "#FFD1DC", "#FFE8B0"];
+                    return (
+                      <circle
+                        key={f.label}
+                        cx="50" cy="50" r="45"
+                        fill="none"
+                        stroke={pinkShades[i]}
+                        strokeWidth="8"
+                        strokeDasharray={`${dashArray} ${282.7 - dashArray}`}
+                        strokeDashoffset={dashOffset}
+                        className="transition-all duration-1000"
+                        style={{ opacity: visible ? 1 : 0 }}
+                      />
+                    );
+                  })}
+                </svg>
               </div>
 
               {/* 图例 */}
               <div className="flex-1 space-y-2 self-stretch">
-                {factorData.map((f) => (
-                  <div key={f.label} className="flex items-center gap-2">
-                    <span
-                      className="h-2.5 w-2.5 shrink-0 rounded-full"
-                      style={{ backgroundColor: f.color }}
-                    />
-                    <span className="flex-1 text-xs text-apple-gray">{f.label}</span>
-                    <span className="text-xs font-semibold text-[#1d1d1f]">
-                      {f.percentage}%
-                    </span>
-                  </div>
-                ))}
+                {factorData.map((f, i) => {
+                  const pinkShades = ["#D4748F", "#FF6B8A", "#F0B8C8", "#F5D0DC", "#FCE4EC"];
+                  return (
+                    <div key={f.label} className="flex items-center gap-2">
+                      <span className="h-2.5 w-2.5 shrink-0" style={{ backgroundColor: pinkShades[i] }} />
+                      <span className="flex-1 text-xs text-[#8a8a8a]">{f.label}</span>
+                      <span className="text-xs font-semibold text-[#1a1a1a]">{f.percentage}%</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
 
           {/* ---------- 左下：痛点 ---------- */}
-          <div className="rounded-2xl border border-apple-border/20 bg-white/60 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover md:p-6">
-            <h3 className="text-sm font-semibold text-accent">财商教育困境</h3>
-            <p className="mt-1 text-base font-medium text-[#1d1d1f]">
+          <div className="border p-5 transition-all duration-300 hover:bg-[#FFF0F3] md:p-6" style={{ borderColor: "#FFD1DC" }}>
+            <h3 className="text-sm font-semibold text-[#1a1a1a]">财商教育困境</h3>
+            <p className="mt-1 text-base font-medium text-[#1a1a1a]">
               无现金时代的儿童财商痛点
             </p>
 
             <div className="mt-5 space-y-4">
               {painPoints.map((p) => (
                 <div key={p.title} className="flex items-start gap-3">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-lg">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center border text-lg" style={{ borderColor: "#FFD1DC" }}>
                     {p.icon}
                   </span>
                   <div>
-                    <p className="text-sm font-medium text-[#1d1d1f]">{p.title}</p>
-                    <p className="mt-0.5 text-xs leading-relaxed text-apple-gray">{p.desc}</p>
+                    <p className="text-sm font-medium text-[#1a1a1a]">{p.title}</p>
+                    <p className="mt-0.5 text-xs leading-relaxed text-[#8a8a8a]">{p.desc}</p>
                   </div>
                 </div>
               ))}
@@ -168,20 +171,17 @@ export default function ResearchSection() {
           </div>
 
           {/* ---------- 右下：竞品分析 ---------- */}
-          <div className="rounded-2xl border border-apple-border/20 bg-white/60 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover md:p-6">
-            <h3 className="text-sm font-semibold text-accent">竞品调研分析</h3>
-            <p className="mt-1 text-base font-medium text-[#1d1d1f]">
+          <div className="border p-5 transition-all duration-300 hover:bg-[#FFF0F3] md:p-6" style={{ borderColor: "#FFD1DC" }}>
+            <h3 className="text-sm font-semibold text-[#1a1a1a]">竞品调研分析</h3>
+            <p className="mt-1 text-base font-medium text-[#1a1a1a]">
               现有财商产品的不足
             </p>
 
             <div className="mt-5 space-y-2.5">
               {competitors.map((c) => (
-                <div
-                  key={c.name}
-                  className="rounded-xl border border-apple-border/10 bg-white/40 p-3 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/80"
-                >
-                  <p className="text-sm font-medium text-[#1d1d1f]">{c.name}</p>
-                  <p className="mt-0.5 text-xs leading-relaxed text-apple-gray">{c.desc}</p>
+                <div key={c.name} className="border p-3 transition-all duration-200 hover:bg-[#f5f5f5]" style={{ borderColor: "#FFD1DC" }}>
+                  <p className="text-sm font-medium text-[#1a1a1a]">{c.name}</p>
+                  <p className="mt-0.5 text-xs leading-relaxed text-[#8a8a8a]">{c.desc}</p>
                 </div>
               ))}
             </div>

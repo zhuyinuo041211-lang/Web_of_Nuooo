@@ -29,7 +29,7 @@ export default function SideNav({ items }: { items: NavItem[] }) {
 
   return (
     <nav className="hidden lg:block">
-      <ul className="sticky top-24 w-44 space-y-1">
+      <ul className="sticky top-24 w-44 space-y-0">
         {items.map((item) => (
           <li key={item.id}>
             <a
@@ -38,10 +38,10 @@ export default function SideNav({ items }: { items: NavItem[] }) {
                 e.preventDefault();
                 document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
               }}
-              className={`block rounded-lg px-3 py-2 text-xs leading-relaxed transition-all duration-200 ${
+              className={`block border-l-2 py-2 pl-4 text-xs leading-relaxed transition-all duration-200 ${
                 activeId === item.id
-                  ? "bg-accent/10 font-medium text-accent"
-                  : "text-apple-gray hover:bg-accent/5 hover:text-[#1d1d1f]"
+                  ? "border-[#1a1a1a] font-medium text-[#1a1a1a]"
+                  : "border-transparent text-[#b0b0b0] hover:border-[#d4d4d4] hover:text-[#8a8a8a]"
               }`}
             >
               {item.label}
