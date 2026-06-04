@@ -5,7 +5,7 @@ export default function Skills() {
   return (
     <section className="py-[75px]">
       <div className="container-apple">
-        <SectionTitle number="02" title="能力图谱" />
+        <SectionTitle number="04" title="能力图谱" />
         <div className="grid grid-cols-1 gap-px md:grid-cols-2 lg:grid-cols-4 border-t border-l" style={{ borderColor: "var(--border)" }}>
           {skills.map((skill) => (
             <div

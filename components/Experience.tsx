@@ -5,7 +5,7 @@ export default function Experience() {
   return (
     <section className="py-[75px]">
       <div className="container-apple">
-        <SectionTitle number="04" title="经历" />
+        <SectionTitle number="03" title="经历" />
         <div className="mx-auto max-w-[640px]">
           {experiences.map((item) => (
             <div

@@ -5,15 +5,24 @@ import SectionTitle from "./SectionTitle";
 export default function About() {
   return (
     <section id="about" className="container-apple py-[75px]">
-      <SectionTitle number="03" title="个人简介" />
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.3fr_0.9fr] md:gap-20">
+      <SectionTitle number="02" title="个人简介" />
+      <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.5fr_0.7fr] md:gap-20">
         <div>
           <div className="space-y-6">
-            {aboutParagraphs.map((text) => (
-              <p key={text} className="text-sm leading-7 text-[#8a8a8a] md:text-base md:leading-8">
-                {text}
-              </p>
-            ))}
+            {aboutParagraphs.map((text) => {
+              const parts = text.split(/(浙江大学|同济大学)/);
+              return (
+                <p key={text} className="text-sm leading-7 text-[#8a8a8a] md:text-base md:leading-8">
+                  {parts.map((part, i) =>
+                    part === "浙江大学" || part === "同济大学" ? (
+                      <strong key={i} className="font-semibold text-[#1a1a1a]">{part}</strong>
+                    ) : (
+                      part
+                    )
+                  )}
+                </p>
+              );
+            })}
           </div>
         </div>
         <div className="relative">

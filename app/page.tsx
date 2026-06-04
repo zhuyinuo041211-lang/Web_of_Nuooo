@@ -23,9 +23,9 @@ export default function Home() {
       <div className="hairline" />
       <About />
       <div className="hairline" />
-      <Skills />
-      <div className="hairline" />
       <Experience />
+      <div className="hairline" />
+      <Skills />
       <Footer />
     </main>
   );
