@@ -272,6 +272,12 @@ export const skills: Skill[] = [
 
 export const experiences: ExperienceItem[] = [
   {
+    year: "2026.6-2026.9",
+    title: "携程集团-产品经理（实习）",
+    description:
+      "在全球展演业务线担任产品经理，负责 APP 业务需求全流程迭代、数据埋点与 A/B 测试、跨团队内容与体验治理，并推动 AI 问答工具接入及 AI-Native 产品项目落地。"
+  },
+  {
     year: "2026.2-2026.6",
     title: "Taala AI-产品经理（实习）",
     description:
